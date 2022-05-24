@@ -33,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@tailwindcss/aspect-ratio": "^0.4.0"
+		"@tailwindcss/aspect-ratio": "^0.4.0",
+		"firebase": "^9.8.1"
 	}
 }
