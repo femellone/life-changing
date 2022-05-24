@@ -90,51 +90,45 @@
 						<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 						<a
 							href="/"
-							class="nav-item--{$page.routeId === ''
-								? 'current'
-								: 'default'} px-3 py-2 rounded-md text-sm font-medium"
+							class="nav-item--{$page.routeId === '' ? 'current' : 'default'}"
 							aria-current="page">Inicio</a
 						>
 
 						<a
 							href="/personajes"
-							class="nav-item--{$page.routeId === 'personajes'
-								? 'current'
-								: 'default'} px-3 py-2 rounded-md text-sm font-medium">Personajes</a
+							class="nav-item--{$page.routeId === 'personajes' ? 'current' : 'default'}"
+							>Personajes</a
 						>
 					</div>
 				</div>
 			</div>
 			{#if userId}
-				<button
-					class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium justify-self-end"
-					on:click={signOut}>Cerrar sesión</button
-				>
+				<button class="nav-item--default justify-self-end" on:click={signOut}>Cerrar sesión</button>
 			{/if}
 		</div>
 	</div>
 
 	<!-- Mobile menu, show/hide based on menu state. -->
-	<div class="sm:hidden" id="mobile-menu">
+	<div
+		class="{menuIsOpen
+			? 'h-16'
+			: 'h-0'} sm:hidden transition-[height] overflow-hidden ease-in-out delay-150"
+	>
 		<div class="px-2 pt-2 pb-3 space-y-1">
 			<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 			<a
 				href="/"
-				class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+				class="nav-item--{$page.routeId === '/' ? 'current' : 'default'}"
 				aria-current="page">Inicio</a
 			>
 
 			<a
 				href="/personajes"
-				class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-				>Personajes</a
+				class="nav-item--{$page.routeId === 'personajes' ? 'current' : 'default'}">Personajes</a
 			>
 
 			{#if userId}
-				<button
-					class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-					on:click={signOut}>Cerrar sesión</button
-				>
+				<button class="nav-item--current" on:click={signOut}>Cerrar sesión</button>
 			{/if}
 		</div>
 	</div>
@@ -148,5 +142,9 @@
 	}
 	.nav-item--default {
 		@apply text-gray-300 hover:bg-gray-700 hover:text-white;
+	}
+
+	[class^='nav-item--'] {
+		@apply px-3 py-2 rounded-md text-sm font-medium;
 	}
 </style>
