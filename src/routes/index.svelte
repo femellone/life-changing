@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	const personajes = [];
+</script>
+
+<form
+	on:submit={(e) => {
+		e.preventDefault();
+	}}
+>
+	<input type="text" name="name" placeholder="Name" />
+	<input type="text" name="email" placeholder="Email" required autocomplete="off" />
+	<input type="submit" value="Submit" />
+</form>
+
+<style>
+	form {
+		margin: 15px;
+	}
+</style>
